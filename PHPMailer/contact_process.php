@@ -1,54 +1,26 @@
 <?php
 
-$resut="";
-if(isset($_post['submit'])){
-require 'PHPMailer/PHPMailerAutoload.php';
-$mail = new PHPMailer;
-$mail->Host='smtp.gmail.com';
-$mail->port=587;
-$mail->SMPTAuth=true;
-$mail->SMTPSecure='tls';
-$mail->username='shabycht@gmail.com';
-$mail->password='9947744466';
-$mail->setfrom($_post['email']);
-$mail->addAddress('drjebinmk@gmail.com');
-$mail->addreaplyto($_post['email']);
-$mail->ishtml(true);
-$mail->Subject='Form submission dr jebin:'.$_post['subject'];
-$mail->Body='<h1 align=center>Name :'.$_post['Enter Your Name'].'<br>Email: '.$_post['email']. <br>message: '.$_post['msg'].'</h1>';
+    $to = "drjeby@cymaunani.com";
+    $from = $_REQUEST['email'];
+    $name = $_REQUEST['name'];
+    $subject = $_REQUEST['subject'];
+    $number = $_REQUEST['number'];
+    $cmessage = $_REQUEST['message'];
 
+    $headers = "From: $from";
+	$headers = "From: " . $from . "\r\n";
+	$headers .= "Reply-To: ". $from . "\r\n";
+	$headers .= "MIME-Version: 1.0\r\n";
+	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    $subject = "You have a message.";
 
     $logo = 'img/logo.png';
     $link = '#';
 
 	$body = "<!DOCTYPE html><html lang='en'><head><meta charset='UTF-8'><title>Express Mail</title></head><body>";
 	$body .= "<table style='width: 100%;'>";
-	$body .= "<thead style='text-align: center;'> <?= $result; ?> <tr><td style='border:none;' colspan='2'>";
+	$body .= "<thead style='text-align: center;'><tr><td style='border:none;' colspan='2'>";
 	$body .= "<a href='{$link}'><img src='{$logo}' alt=''></a><br><br>";
 	$body .= "</td></tr></thead><tbody><tr>";
 	$body .= "<td style='border:none;'><strong>Name:</strong> {$name}</td>";
